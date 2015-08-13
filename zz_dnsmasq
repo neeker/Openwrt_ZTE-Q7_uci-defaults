@@ -6,7 +6,7 @@
 cat <<-EOF > '/etc/dnsmasq.conf'
 
 address=/openwrt.cc/$(uci get network.lan.ipaddr)
-conf-dir=/etc/dnsmasq.d
+#conf-dir=/etc/dnsmasq.d
 
 EOF
 
