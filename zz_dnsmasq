@@ -1,0 +1,13 @@
+#By:EricChan 2015-08-12
+#https://github.com/chenhw2
+
+#!/bin/sh
+
+cat <<-EOF > '/etc/dnsmasq.conf'
+
+address=/openwrt.cc/$(uci get network.lan.ipaddr)
+conf-dir=/etc/dnsmasq.d
+
+EOF
+
+exit 0
