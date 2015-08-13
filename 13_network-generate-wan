@@ -1,0 +1,19 @@
+#By:EricChan 2015-08-12
+#https://github.com/chenhw2
+
+#!/bin/sh
+
+[ $(cat /proc/cpuinfo | grep -c 'ZTE Q7') -eq 0 ] && exit 0
+
+uci -q batch <<-EOF >/dev/null
+	delete network.lan.ifname
+	set network.lan._orig_ifname='eth0 wlan0'
+	set network.lan._orig_bridge='true'
+
+	set network.wan=interface
+	set network.wan.ifname=eth0
+	set network.wan.proto=dhcp
+	commit network
+EOF
+
+exit 0
