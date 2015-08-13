@@ -1,0 +1,10 @@
+#By:EricChan 2015-08-12
+#https://github.com/chenhw2
+
+#!/bin/sh
+
+#sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg.conf
+#sed -i 's/downloads.openwrt.org/mirrors.mujj.us\/openwrt/g' /etc/opkg.conf
+sed -i 's/downloads.openwrt.org/openwrt.bobiji.com/g' /etc/opkg.conf
+
+exit 0
