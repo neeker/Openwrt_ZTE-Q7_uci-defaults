@@ -1,0 +1,19 @@
+#By:EricChan 2015-08-12
+#https://github.com/chenhw2
+
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	add luci command
+	set luci.@command[-1].name='SS_Check'
+	set luci.@command[-1].command='cat /var/etc/shadowsocks.json'
+	add luci command
+	set luci.@command[-1].name='DNS_Check(FB)'
+	set luci.@command[-1].command='resolveip facebook.com'
+	add luci command
+	set luci.@command[-1].name='IP_Check'
+	set luci.@command[-1].command='/bin/_getipaddr'
+	commit luci
+EOF
+
+exit 0
