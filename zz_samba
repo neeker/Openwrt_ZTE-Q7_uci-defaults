@@ -15,6 +15,7 @@ uci -q batch <<-EOF >/dev/null
 	commit samba
 EOF
 
+#set smbpasswd/root:admin
 cat <<-EOF_PWD > '/etc/samba/smbpasswd'
 root:0:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:209C6174DA490CAEB422F3FA5A7AE634:[U          ]:LCT-00000001:
 EOF_PWD
