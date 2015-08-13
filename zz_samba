@@ -1,0 +1,24 @@
+#By:EricChan 2015-08-12
+#https://github.com/chenhw2
+
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	add samba sambashare
+	set samba.@sambashare[0].name=root
+	set samba.@sambashare[0].path=/
+	set samba.@sambashare[0].users=root
+	set samba.@sambashare[0].read_only=no
+	set samba.@sambashare[0].guest_ok=no
+	set samba.@sambashare[0].create_mask=0755
+	set samba.@sambashare[0].dir_mask=0755
+	commit samba
+EOF
+
+cat <<-EOF_PWD > '/etc/samba/smbpasswd'
+root:0:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:209C6174DA490CAEB422F3FA5A7AE634:[U          ]:LCT-00000001:
+EOF_PWD
+
+sed -ie 's/\tinvalid/#\tinvalid/g' '/etc/samba/smb.conf.template'
+
+exit 0
